@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Place Order - Vanshoppe</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #e9ffe9;
+      margin: 0;
+      padding: 20px;
+    }
+    .container {
+      max-width: 500px;
+      margin: auto;
+      background: white;
+      padding: 2rem;
+      border-radius: 12px;
+      text-align: center;
+    }
+    h1 {
+      color: #28a745;
+    }
+    p {
+      margin: 20px 0;
+    }
+    a {
+      display: inline-block;
+      margin-top: 20px;
+      background-color: #007bff;
+      color: white;
+      padding: 12px 24px;
+      border-radius: 8px;
+      text-decoration: none;
+    }
+    a:hover {
+      background-color: #0056b3;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Thank you for your order!</h1>
+    <p>Your order has been placed successfully.</p>
+    <a href="HOME.HTML">Back to Home</a>
+  </div>
+
+  <script>
+    localStorage.removeItem('cartItems');
+  </script>
+</body>
+</html>

@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Order Summary - Vanshoppe</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f4f4f4;
+      margin: 0;
+      padding: 20px;
+    }
+    .container {
+      max-width: 600px;
+      margin: auto;
+      background: #fff;
+      padding: 2rem;
+      border-radius: 12px;
+    }
+    h1 {
+      text-align: center;
+    }
+    ul {
+      padding: 0;
+      list-style: none;
+      margin: 1rem 0;
+    }
+    li {
+      display: flex;
+      justify-content: space-between;
+      padding: 10px 0;
+      border-bottom: 1px solid #ddd;
+    }
+    .total {
+      font-size: 1.2rem;
+      font-weight: bold;
+      text-align: right;
+      margin-top: 1rem;
+    }
+    .btn {
+      display: block;
+      width: 100%;
+      padding: 12px;
+      margin-top: 2rem;
+      background-color: #007bff;
+      color: #fff;
+      text-align: center;
+      border: none;
+      border-radius: 8px;
+      font-size: 1rem;
+      cursor: pointer;
+      text-decoration: none;
+    }
+    .btn:hover {
+      background-color: #0056b3;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Order Summary</h1>
+    <ul id="order-summary-list"></ul>
+    <div class="total" id="order-total">Total: ₱0.00</div>
+    <a href="PLACEORDER.HTML" class="btn">Place Order</a>
+  </div>
+
+  <script>
+    const orderList = document.getElementById('order-summary-list');
+    const orderTotal = document.getElementById('order-total');
+    const cartItems = JSON.parse(localStorage.getItem('cartItems')) || [];
+
+
+    let total = 0;
+    orderList.innerHTML = '';
+
+    if (cartItems.length === 0) {
+      orderList.innerHTML = '<li>Your cart is empty.</li>';
+    } else {
+      cartItems.forEach(item => {
+        const itemTotal = item.price * item.quantity;
+        total += itemTotal;
+
+        const li = document.createElement('li');
+        li.innerHTML = `<span>${item.name} x${item.quantity}</span><span>₱${itemTotal.toFixed(2)}</span>`;
+        orderList.appendChild(li);
+      });
+    }
+
+    orderTotal.textContent = `Total: ₱${total.toFixed(2)}`;
+
+    
+  </script>
+</body>
+</html>
